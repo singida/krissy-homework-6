@@ -1,9 +1,22 @@
+<!-- 
+	Hi Krissy!  I included feedback on your code in HTML comments like this one.
+
+	Overall, great job with the form!  The HTML structure is great - I just have a few comments 
+	around the radio buttons (see them inline).
+
+	Also, regarding styling, you can always make all of your form elements block elements (using 
+	display: block in your CSS) to make the form look a little nicer.
+-->
+
 <!DOCTYPE html>
 
 <html>
 	<head>
 		<title>Donation Page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--
+			Random note - don't forget to include a normalize or reset CSS file here.
+		-->
 		<link rel="stylesheet" href="css/style.css">
 
 	</head>
@@ -18,6 +31,29 @@
 			<label for="lastName">Last Name</label>
 			<input type="text" name="lastName" id="lastName">
 
+			<!--
+				For radio buttons, all of the buttons in a particular group - in this case, all
+				the buttons for different donation amounts - need to have the same name in the 
+				name attribute.  What you are using as the name, you should use as the value
+				attribute.
+
+				The value attribute is how the backend knows what amount the user
+				selected.
+
+				The name attribute is how the HTML knows all of the radio buttons belong to
+				the same group, which is what forces the user to only be able to pick one.
+
+				Also, all of the radio buttons should be children of the same label tag.
+
+				Example:
+
+				<label for="donations">
+					Please select donation amount
+					<input type="radio" name="donations" value="25">$25</option>
+					<input type="radio" name="donations" value="50">$50</option>
+					<input type="radio" name="donations" value="75">$75</option>
+				</label>
+			-->
 			<label for="donations">Please select donation amount</label>
 				<label>
 					<input type="radio" name="$25">$25</option>
@@ -33,7 +69,38 @@
 				</label>
 				</input>
 			
+			<!-- 
+				Don't forget to use the <label> tag to label this password field, just like you did
+				with the first name and last name fields.  For example:
+
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password">
+			-->
 			<input type="password">Password</input>
+
+			<!--
+				Instead of wrapping the submit button in an <a> tag, you should
+				use Javascript to redirect the page to another page (which I just
+				realized we did not quite go over page redirection).
+
+				The <a> tag around your button is also why your validation JS is not running.
+
+				You can use the submit event to listen for when the user submits the form
+				and then do whatever it needs to do and then take the user to the thank you page.
+
+				So... in the JS file:
+
+				$('form').submit(processForm);
+
+				function processForm() {
+					// Do whatever you need to do with the form.
+
+					// Then go to the thank you page.
+					window.location.assign('thanks.html');
+				}
+
+				See my comments in the JS file too.
+			-->
 			<a href="thanks.html">Submit donation!
 				<button type="submit" value="Submit donation!"></button>
 			</a>
